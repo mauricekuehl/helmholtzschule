@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!--give a star on github https://github.com/mauricekuehl/helmholtzschule -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="img-background">
+      <div class="background-gradient"></div>
+    </div>
+    <div class="main-background">
+      <nav>
+        <div class="logo"></div>
+        <div class="up-row row">
+          <h3>Made by</h3>
+          <h3>Magnus</h3>
+          <h3>Lauritz</h3>
+          <h3>Tillmann</h3>
+          <div class="btn-background">Office</div>
+          <div class="btn-background">Schlechtes-Portal</div>
+        </div>
+        <div class="low-row row">
+          <h2>Home</h2>
+          <h2>Schule</h2>
+          <h2>Angebot</h2>
+          <h2>Eindrücke</h2>
+          <h2>Bewerbung</h2>
+          <h2>Freundeskreis</h2>
+        </div>
+      </nav>
+      <div class="btn-background unsere-schule">Unsere Schule</div>
+      <h1>Hermann-von-Helmholtz</h1>
+      <h2>Gymnasium Potsdam</h2>
+      <h2>MINTEC Schule</h2>
+      <div class="footer-background">
+        <div>Studien</div>
+        <div>Lorem.</div>
+        <div>Lorem ipsum dolor sit.</div>
+      </div>
+    </div>
+    <div class="cookie-banner-overlay">
+      <div class="cookie-banner">
+        <h2>Einstellungen zum Datenschutz</h2>
+        <div class="text">
+          Um Ihnen ein optimales Erlebnis zu bieten, verwenden wir Cookies und
+          ähnliche Tools. Erfahren Sie mehr in unserer<button>
+            Datenschutzrichtlinie
+          </button>
+          und
+          <button>Cookie-Richtlinie.</button>
+          Sie können Ihre Auswahl jederzeit über die Datenschutzeinstellungen
+          aktualisieren.
+        </div>
+        <div class="options">
+          <button>Einstellungen aktualisieren</button
+          ><button class="accept">Annehmen</button>
+        </div>
+      </div>
+    </div>
+    <div id="player"></div>
+    <div class="stats">
+      <p class="count">?</p>
+      <p>people have been rickrolled</p>
+    </div>
+    <footer>
+      <a href="/impressum">Impressum</a
+      ><a href="https://github.com/mauricekuehl/helmholtzschule">github</a>
+    </footer>
+    <script>
+      var tag = document.createElement("script");
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          videoId: "dQw4w9WgXcQ",
+          playerVars: {
+            playsinline: 1,
+            controls: 0,
+          },
+          events: {
+            onReady: onPlayerReady,
+          },
+        });
+      }
+
+      let toPlay = false;
+      document
+        .querySelector(".cookie-banner-overlay")
+        .addEventListener("click", () => {
+          toPlay = true;
+        });
+
+      function onPlayerReady(event) {
+        if (toPlay) {
+          play(event);
+        }
+        document
+          .querySelector(".cookie-banner-overlay")
+          .addEventListener("click", () => {
+            play(event);
+          });
+      }
+      function play(event) {
+        try {
+          fetch("/api")
+            .then((res) => res.json())
+            .then((res) => {
+              console.log(res);
+              document.querySelector(".count").textContent = res;
+            });
+        } catch (error) {
+          console.log(error);
+        }
+        document.querySelector("#player").style.display = "block";
+        document.querySelector(".stats").style.display = "block";
+        event.target.playVideo();
+      }
+    </script>
+  </body>
+  <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+    html,
+    body,
+    .img-background,
+    .background-gradient {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    body {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    #player {
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      z-index: 50;
+      position: absolute;
+      top: 0;
+    }
+    .img-background {
+      background-image: url("https://helmholtzschule.de/_nuxt/img/d69dc5c.webp");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center center;
+      z-index: -99;
+
+      filter: blur(6px);
+      -webkit-filter: blur(6px);
+      position: absolute;
+    }
+    .background-gradient {
+      background-image: linear-gradient(
+        rgb(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.2),
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1),
+        rgb(0, 0, 0, 0.6)
+      );
+    }
+    .main-background {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      filter: blur(7px);
+      -webkit-filter: blur(7px);
+      position: absolute;
+      z-index: -10;
+    }
+    .main-background h1 {
+      padding-top: 10vh;
+      font-size: 4rem;
+      color: white;
+      text-align: center;
+      font-weight: 300;
+      margin-bottom: -1rem;
+    }
+    .main-background h2 {
+      color: white;
+      font-size: 1.75rem;
+      padding-bottom: 10vh;
+    }
+    nav {
+      margin: 0 2rem;
+      color: white;
+      display: grid;
+      grid-template-columns: 6rem auto;
+      grid-template-rows: 1fr 1fr;
+      width: 100%;
+      height: 10%;
+      grid-template-areas:
+        "logo up"
+        "logo low";
+    }
+    .logo {
+      grid-area: logo;
+      width: 5rem;
+      padding: 0.25rem;
+      margin: 0.75rem;
+      margin-top: 1.25rem;
+      color: rgba(255, 255, 255, 0.52);
+      background-image: url("https://helmholtzschule.de/_nuxt/img/4b0282e-100.png");
+      background-repeat: no-repeat;
+    }
+    .up-row {
+      margin-top: 1rem;
+      grid-area: up;
+      padding: 0.5rem 0;
+    }
+    .low-row {
+      grid-area: low;
+    }
+    .row {
+      display: flex;
+      width: 100%;
+      justify-content: right;
+    }
+    .row > * {
+      margin: 0 0.75rem;
+    }
+    .btn-background {
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.25rem;
+    }
+    .footer-background {
+      padding: 0.25rem 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      font-size: 1.5rem;
+    }
+    .unsere-schule {
+      margin-top: 12vh;
+    }
+    .cookie-banner-overlay {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 20;
+    }
+    .cookie-banner {
+      width: 36rem;
+      max-width: 90vw;
+      background-color: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.75rem;
+    }
+    .cookie-banner h2 {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .cookie-banner .text {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .cookie-banner .options button {
+      border: none;
+      padding: 1rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 5rem;
+      margin: 0 0.5rem;
+      margin-top: 1rem;
+      background-color: white;
+      cursor: pointer;
+    }
+    .cookie-banner .options .accept {
+      background-color: black;
+      color: white;
+    }
+    .cookie-banner .options button:hover {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+    .cookie-banner .options .accept:hover {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+    .cookie-banner .options {
+      display: flex;
+      justify-content: right;
+    }
+    .cookie-banner .text button {
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: underline;
+    }
+    .stats {
+      height: 2rem;
+      display: block;
+      position: fixed;
+      bottom: 0px;
+      left: 5px;
+      z-index: 99;
+      font-size: 1.5rem;
+      color: white;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    .stats > * {
+      display: inline;
+    }
+    iframe {
+      pointer-events: none;
+      position: relative;
+    }
+    footer {
+      width: 100%;
+      height: 3rem;
+      background: black;
+      display: flex;
+      align-items: center;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem;
+    }
+  </style>
+</html>
