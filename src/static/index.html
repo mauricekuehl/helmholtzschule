@@ -112,9 +112,20 @@
             play(event);
           });
       }
+      let sessionID;
+      fetch("/api/session")
+        .then((res) => res.json())
+        .then((res) => {
+          sessionID = res.sessionID;
+        });
+
       function play(event) {
         try {
-          fetch("/api")
+          fetch("/api", {
+            headers: {
+              Authorization: sessionID,
+            },
+          })
             .then((res) => res.json())
             .then((res) => {
               document.querySelector(".count").textContent = res;
