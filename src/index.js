@@ -13,10 +13,7 @@ app.use(express.json());
 
 let session = {};
 app.get("/api", (request, response) => {
-  if (request.header("x-forwarded-for") === "79.226.116.160") {
-    //school ip
-    response.status(403).send();
-  } else if (request.header("Authorization") in session) {
+  if (request.header("Authorization") in session) {
     delete session[request.header("Authorization")];
     fs.readFile("count.json", (err, data) => {
       let d = JSON.parse(data);

@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<!-- github: https://github.com/mauricekuehl/helmholtzschule -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, minimum-scale=1" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://helmholtzschule.de/favicon.ico"
-    />
     <title>Helmholtzschule</title>
   </head>
   <body>
@@ -19,32 +13,19 @@
     <div class="main-background">
       <nav>
         <div class="logo"></div>
-        <div class="up-row row">
-          <h3>Made by</h3>
+        <div class="row">
+          <h3>MadeBy</h3>
           <h3>Magnus</h3>
           <h3>Lauritz</h3>
           <h3>Tillmann</h3>
           <div class="btn-background">Lorem.</div>
-          <div class="btn-background">Schlechtes-Portal</div>
-        </div>
-        <div class="low-row row">
-          <h2>Home</h2>
-          <h2>Schule</h2>
-          <h2>Angebot</h2>
-          <h2>Rickroll</h2>
-          <h2>Bewerbung</h2>
-          <h2>Freundeskreis</h2>
+          <div class="btn-background">SchlechtesPortal</div>
         </div>
       </nav>
-      <div class="btn-background unsere-schule">Unsere Schule</div>
-      <h1>Helmholtz-von-Hermann</h1>
-      <h2>Gymnasium Potsdam</h2>
-      <h2>TECMIN Schule</h2>
-      <div class="footer-background">
-        <div>Studien</div>
-        <div>Lorem.</div>
-        <div>Lorem ipsum dolor sit.</div>
-      </div>
+      <div class="btn-background unsere-schule">Lorem Ipsum</div>
+      <h1>Lorem ipsum dolor sit amet</h1>
+      <h2></h2>
+      <h2>magna aliqua</h2>
     </div>
     <div class="cookie-banner-overlay">
       <div class="cookie-banner">
@@ -70,10 +51,6 @@
       <p class="count">?</p>
       <p>people have been rickrolled</p>
     </div>
-    <footer>
-      <a href="/impressum">Impressum</a
-      ><a href="https://github.com/mauricekuehl/helmholtzschule">github</a>
-    </footer>
     <script>
       var tag = document.createElement("script");
 
@@ -166,7 +143,7 @@
       top: 0;
     }
     .img-background {
-      background-image: url("https://helmholtzschule.de/_nuxt/img/d69dc5c.webp");
+      background-image: url("./helmholtzschule-foto.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
@@ -180,10 +157,10 @@
     .background-gradient {
       background-image: linear-gradient(
         rgb(0, 0, 0, 0.8),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.1),
-        rgb(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3),
+        rgb(0, 0, 0, 0.1)
       );
     }
     .main-background {
@@ -214,40 +191,33 @@
     nav {
       margin: 0 2rem;
       color: white;
-      display: grid;
-      grid-template-columns: 6rem auto;
-      grid-template-rows: 1fr 1fr;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       width: 100%;
       height: 10%;
-      grid-template-areas:
-        "logo up"
-        "logo low";
     }
     .logo {
-      grid-area: logo;
-      width: 5rem;
+      height: 6rem;
+      min-width: 6rem;
       padding: 0.25rem;
       margin: 0.75rem;
       margin-top: 1.25rem;
       color: rgba(255, 255, 255, 0.52);
-      background-image: url("https://helmholtzschule.de/_nuxt/img/4b0282e-100.png");
+      background-image: url("./logo.png");
       background-repeat: no-repeat;
-    }
-    .up-row {
-      margin-top: 1rem;
-      grid-area: up;
-      padding: 0.5rem 0;
-    }
-    .low-row {
-      grid-area: low;
     }
     .row {
       display: flex;
-      width: 100%;
+      align-items: center;
+      width: auto;
       justify-content: right;
     }
     .row > * {
       margin: 0 0.75rem;
+      width: 100%;
+      max-height: 3rem;
+      text-align: center;
     }
     .btn-background {
       background-color: white;
@@ -255,14 +225,7 @@
       text-align: center;
       padding: 1rem;
       font-size: 1.25rem;
-    }
-    .footer-background {
-      padding: 0.25rem 1rem;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      color: white;
-      font-size: 1.5rem;
+      border-radius: 0.5rem;
     }
     .unsere-schule {
       margin-top: 12vh;
@@ -340,18 +303,6 @@
     iframe {
       pointer-events: none;
       position: relative;
-    }
-    footer {
-      width: 100%;
-      height: 3rem;
-      background: black;
-      display: flex;
-      align-items: center;
-    }
-    footer a {
-      color: white;
-      text-decoration: none;
-      padding: 1rem;
     }
   </style>
 </html>
