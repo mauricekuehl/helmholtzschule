@@ -129,7 +129,7 @@
       height: 100%;
       padding: 0;
       margin: 0;
-      overflow-x: hidden;
+      overflow: hidden;
     }
     body {
       background-color: rgba(0, 0, 0, 0.8);
@@ -303,6 +303,14 @@
     iframe {
       pointer-events: none;
       position: relative;
+    }
+    @media (max-width: 370px) {
+      .cookie-banner .options button {
+        margin: 0.25rem 0;
+      }
+      .cookie-banner .options {
+        flex-direction: column;
+      }
     }
   </style>
 </html>
